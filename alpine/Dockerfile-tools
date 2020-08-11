@@ -1,0 +1,6 @@
+FROM alpine
+RUN apk add --update --no-cache netcat-openbsd ca-certificates  curl busybox-extras bash  bash-completion bash-doc openssh
+RUN sed -i '1s/ash/bash/g' /etc/passwd
+COPY ./.bashrc /root/
+COPY ./bash.bashrc /etc/
+ENTRYPOINT ["tail", "-f", "/etc/hosts"]
