@@ -55,3 +55,5 @@ Restarting nginx ... done
 ```
 
 After script you will get new CA for `*.${your-domain-hosted-on-route53}` in `/var/lib/docker/nexus/nginx/ssl/`
+
+Idea for here: https://blog.neilkuan.dev/2020/certbot_lets_encrypt_create_ca_aws_route53/
