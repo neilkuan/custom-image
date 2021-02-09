@@ -1,0 +1,28 @@
+version: '3.1'
+services:
+  api:
+    container_name: api
+    ports:
+      - "8080:8080"
+    image: "xxx"
+    volumes:
+      - /home/ec2-user/api:/config 
+    environment:
+      Ports: "8080"
+    logging:
+      driver: "awslogs"
+      options:
+        awslogs-region: us-west-2
+        awslogs-group: demoLogGroup
+        tag: '{{ with split .ContainerName ":" }}{{join . "_"}}{{end}}-{{.ID}}'
+  db:
+    container_name: db
+    image: "xxx"
+    ports:
+      - "3306:3306"
+    logging:
+      driver: "awslogs"
+      options:
+        awslogs-region: us-west-2
+        awslogs-group: demoLogGroup
+        tag: '{{ with split .ContainerName ":" }}{{join . "_"}}{{end}}-{{.ID}}'
